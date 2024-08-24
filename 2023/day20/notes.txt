@@ -1,0 +1,3 @@
+I originally had a bunch of optimizations but upon looking further into it, they did little to help. Here is a list of them:
+- I had a function that I called with every signal that checked if everything had become low and if so, I could stop and just use a cache but turns out, it never becomes that state so it was just unneccessary work.
+- I also had a list that detected "voids" or places where signal is sent but never sends anything back. Turns out, there is only one of those (rx) so running a calculation for it was pointless.

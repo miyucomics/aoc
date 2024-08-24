@@ -1,0 +1,1 @@
+For part 2, I am using the word quantum because the parameter represent a range of potential values, with each recursive call of the trace function whittling down that range. It represents *possibilities*, not part values, similar to Part 2 of Day 5 with its ranges. I'm also using dictionary comprehensions extensively in order to simplify code and possibly gain performance.
