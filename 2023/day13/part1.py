@@ -4,7 +4,7 @@ def row(grid):
             return y
     return 0
 
-with open("input.txt") as file:
+with open("input.txt", "r") as file:
     answer = 0
     for puzzle in file.read().split("\n\n"):
         puzzle = puzzle.splitlines()

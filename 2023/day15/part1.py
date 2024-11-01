@@ -1,4 +1,4 @@
-with open("input.txt") as file:
+with open("input.txt", "r") as file:
     answer = 0
     for step in file.read().strip().split(","):
         value = 0

@@ -1,4 +1,4 @@
-with open("input.txt") as file:
+with open("input.txt", "r") as file:
     strands = [list(map(int, line.split())) for line in file.read().splitlines()]
 
 def recurse(strand):

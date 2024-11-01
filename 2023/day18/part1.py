@@ -1,6 +1,6 @@
 verts = []
 
-with open("input.txt") as file:
+with open("input.txt", "r") as file:
     cursor = (0, 0)
     directions = {
         "U": (0, -1),

@@ -1,7 +1,7 @@
 perimeter = 0
 verts = []
 
-with open("input.txt") as file:
+with open("input.txt", "r") as file:
     directions = [(1, 0), (0, 1), (-1, 0), (0, -1)]
     cursor = (0, 0)
 

@@ -1,6 +1,6 @@
 workflows = {}
 
-with open("input.txt") as file:
+with open("input.txt", "r") as file:
     workflows = {
         name: data[:-1].split(",")
         for raw in file.read().split("\n\n")[0].splitlines()

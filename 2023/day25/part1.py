@@ -1,7 +1,7 @@
 from collections import defaultdict
 
 graph = defaultdict(set)
-with open("input.txt") as file:
+with open("input.txt", "r") as file:
     for line in file.read().splitlines():
         origin, *destinations = line.replace(":", "").split()
         for destination in destinations:

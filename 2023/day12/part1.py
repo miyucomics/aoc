@@ -25,7 +25,7 @@ def count_configurations(layout, groups):
 
     return count
 
-with open("input.txt") as file:
+with open("input.txt", "r") as file:
     answer = 0
     for line in file.read().splitlines():
         layout, groups = line.split()

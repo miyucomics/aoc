@@ -1,4 +1,4 @@
-with open("input.txt") as file:
+with open("input.txt", "r") as file:
     world = tuple(file.read().splitlines())
 
 iteration = 0
