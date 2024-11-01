@@ -1,6 +1,6 @@
 from collections import defaultdict
 
-with open("input.txt") as file:
+with open("input.txt", "r") as file:
     lenses = {}
     for step in file.read().strip().split(","):
         if "-" in step:

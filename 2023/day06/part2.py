@@ -1,4 +1,4 @@
-with open("input.txt") as file:
+with open("input.txt", "r") as file:
     input_text = file.read().splitlines()
 
 time = int(input_text[0].split(":")[1].replace(" ", ""))

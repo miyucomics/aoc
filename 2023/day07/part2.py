@@ -1,4 +1,4 @@
-with open("input.txt") as file:
+with open("input.txt", "r") as file:
     hands = [line.split() for line in file.read().splitlines()]
 
 card_values = "J23456789TQKA"

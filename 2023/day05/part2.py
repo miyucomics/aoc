@@ -1,4 +1,4 @@
-with open("input.txt") as file:
+with open("input.txt", "r") as file:
     seeds, *mappings = file.read().strip().split("\n\n")
 
 seeds = [int(seed) for seed in seeds.split(": ")[1].split()]

@@ -1,4 +1,4 @@
-with open("input.txt") as file:
+with open("input.txt", "r") as file:
     world = file.read()
     world_width = len(world.split("\n")[0])
     world_height = world.count("\n")

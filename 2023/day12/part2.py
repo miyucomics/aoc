@@ -32,7 +32,7 @@ def count_configurations(layout, groups):
     cache[state] = count
     return count
 
-with open("input.txt") as file:
+with open("input.txt", "r") as file:
     answer = 0
     for line in file.read().splitlines():
         config, groups = line.split()

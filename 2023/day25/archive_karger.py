@@ -3,7 +3,7 @@ from copy import deepcopy
 from random import shuffle
 
 edges = []
-with open("input.txt") as file:
+with open("input.txt", "r") as file:
     edges = [
         [source, target]
         for line in file.read().splitlines()

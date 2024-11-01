@@ -1,7 +1,7 @@
 workflows = {}
 queue = []
 
-with open("input.txt") as file:
+with open("input.txt", "r") as file:
     raw_workflows, raw_parts = file.read().strip().split("\n\n")
 
     workflows = {
