@@ -1,8 +1,10 @@
+from collections import defaultdict
+
 with open("input.txt", "r") as file:
     lines = file.read().splitlines()
 
 directory = ["/"]
-sizes = {}
+sizes = defaultdict(int)
 
 reading = False
 for line in lines:
@@ -22,8 +24,6 @@ for line in lines:
     elif reading and not line.startswith("dir"):
         for i in range(len(directory)):
             key = "/".join(directory[:i + 1])
-            if key not in sizes:
-                sizes[key] = 0
             sizes[key] += int(line.split(" ")[0])
 
 required_space = 30000000 - (70000000 - sizes["/"])

@@ -1,0 +1,5 @@
+This is a pretty fun problem! I have never seen a Part 2 just straight up remove a mechanic before.
+
+For Part 1, I found all the junctions ( places where there are more than one possible path ) and then constructed a smaller graph from those junctions. Then I BFS'ed from each junction in order to find the junctions that can be reached without going up a slope to find the edges. Then it's just a simple recursive algorithm to find the longest path. There happens to be no cycles in the first part since all the slopes are angled towards reaching the end so I didn't need a `seen` set to prevent cycles.
+
+For Part 2, it's essentially the same but with a seen set to prevent cycles, removing the slope code and just flooding out in all directions, and a neat optimization trick: once you reach the junction that goes to the exit, you *must* go to the exit or you will have blocked your only path to it. This cuts off a whole bunch of wasted effort and the problem becomes just finding the longest path to the last junction. You can also do the same for the first junction. In code, this is represented as 'head' and 'tail' which are simply added onto the answer.
