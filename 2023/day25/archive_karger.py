@@ -53,4 +53,4 @@ while True:
     keys = list(edges_map)
     if len(edges_map[keys[0]]) <= 3:
         print(sizes[keys[0]] * sizes[keys[1]])
-        exit(0)
+        exit()
