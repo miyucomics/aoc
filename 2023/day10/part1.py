@@ -35,5 +35,5 @@ while True:
             distance += 1
             if x == startx and y == starty:
                 print(distance / 2)
-                exit(0)
+                exit()
             break

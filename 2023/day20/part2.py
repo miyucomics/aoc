@@ -1,3 +1,5 @@
+from collections import defaultdict, deque
+
 with open("input.txt", "r") as file:
     network = {
         source: destination.split(", ")
@@ -7,12 +9,12 @@ with open("input.txt", "r") as file:
 
 # label the module outputs with their type
 # and collect lookup for what modules are inputs for conjunctions
-conjunction_inputs = {}
+conjunction_inputs = defaultdict(list)
 for module, outputs in network.items():
     network[module] = []
     for output in outputs:
         if "&" + output in network:
-            conjunction_inputs.setdefault("&" + output, []).append(module)
+            conjunction_inputs["&" + output].append(module)
             network[module].append("&" + output)
             continue
         network[module].append("%" + output)
@@ -48,10 +50,10 @@ def lcm(a, b):
 presses = 0
 while True:
     presses += 1
-    queue = [("broadcaster", "L", x) for x in network["broadcaster"]]
+    queue = deque(("broadcaster", "L", x) for x in network["broadcaster"])
 
     while queue:
-        source, signal, target = queue.pop(0)
+        source, signal, target = queue.popleft()
         if target not in network:
             continue
 

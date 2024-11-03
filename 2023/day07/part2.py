@@ -1,3 +1,5 @@
+from collections import defaultdict
+
 with open("input.txt", "r") as file:
     hands = [line.split() for line in file.read().splitlines()]
 
@@ -5,7 +7,7 @@ card_values = "J23456789TQKA"
 hand_types = ["11111", "1112", "122", "113", "23", "14", "5"]
 
 def get_strength(hand):
-    seen = {}
+    seen = defaultdict(int)
     jokers = 0
     sorting_string = ""
     for card in hand[0]:
@@ -13,10 +15,10 @@ def get_strength(hand):
         if card == "J":
             jokers += 1
             continue
-        seen[card] = seen.setdefault(card, 0) + 1
+        seen[card] += 1
 
     if jokers == 5:
-        return "6" + sorting_string
+        return "6"
 
     seen[max(seen, key=seen.get)] += jokers
     hand_strength = "".join(str(number) for number in sorted(list(seen.values())))

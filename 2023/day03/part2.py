@@ -1,7 +1,9 @@
+from collections import defaultdict
+
 with open("input.txt", "r") as file:
     input_text = file.read().splitlines()
 
-gears = {}
+gears = defaultdict(list)
 schematic_width = len(input_text[0]) - 1
 schematic_height = len(input_text) - 1
 
@@ -16,7 +18,7 @@ for y, line in enumerate(input_text):
                 for dx in range(left_bound, right_bound + 1):
                     for dy in range(max(0, y - 1), min(y + 1, schematic_height) + 1):
                         if input_text[dy][dx] == "*":
-                            gears.setdefault(dy * schematic_width + dx, []).append(int(buffer))
+                            gears[dy * schematic_width + dx].append(int(buffer))
                 buffer = ""
 
 print(sum([gear[0] * gear[1] for gear in gears.values() if len(gear) == 2]))
