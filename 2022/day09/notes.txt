@@ -1,0 +1,1 @@
+I did some possibly cursed things using complex numbers but it works out so well with addition and it gets the job done. Could I have made my own vector class, which would be more precise and less cursed? Yes, but this has a certain charm to it too.
