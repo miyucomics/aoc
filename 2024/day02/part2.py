@@ -1,4 +1,4 @@
-def isSafe(row):
+def is_safe(row):
     signs = []
     for i in range(len(row) - 1):
         difference = row[i + 1] - row[i]
@@ -7,14 +7,14 @@ def isSafe(row):
         signs.append(difference > 0)
     return all(signs) or not any(signs)
 
-def lenientSafety(row):
+def lenient_check(row):
     return any(
-        isSafe(row[:i] + row[i + 1:])
+        is_safe(row[:i] + row[i + 1:])
         for i in range(len(row))
     )
 
 with open("input.txt", "r") as file:
     print(sum(
-        lenientSafety(list(map(int, line.split(" "))))
+        lenient_check(list(map(int, line.split(" "))))
         for line in file.read().splitlines()
     ))
