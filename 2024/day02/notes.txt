@@ -1,0 +1,26 @@
+I really liked today's problem! I faced my first coding dilemma this year where I was unsure whether to accept my brute force solution or strive for better. I ended up picking the second option and I am really happy that I did. My original code was O(mn) where m was number of lines and n was number of items in that line, but my new code is linear-time.
+
+Basically, I scan along and if I find an error, it is time to splice it off and test either removing the current or next value. That means it will have to do two extra tests *maximum* per row, which is linear time unlike a brute force solution of removing each item and testing the list without it.
+
+Here is my original brute force code for archive purposes.
+
+def is_safe(row):
+    signs = []
+    for i in range(len(row) - 1):
+        difference = row[i + 1] - row[i]
+        if abs(difference) > 3 or difference == 0:
+            return False
+        signs.append(difference > 0)
+    return all(signs) or not any(signs)
+
+def lenient_check(row):
+    return any(
+        is_safe(row[:i] + row[i + 1:])
+        for i in range(len(row))
+    )
+
+with open("input.txt", "r") as file:
+    print(sum(
+        lenient_check(list(map(int, line.split(" "))))
+        for line in file.read().splitlines()
+    ))
