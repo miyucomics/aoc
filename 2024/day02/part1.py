@@ -1,4 +1,4 @@
-def isSafe(row):
+def is_safe(row):
     signs = []
     for i in range(len(row) - 1):
         difference = row[i + 1] - row[i]
@@ -8,4 +8,4 @@ def isSafe(row):
     return all(signs) or not any(signs)
 
 with open("input.txt", "r") as file:
-    print(sum(isSafe(list(map(int, line.split(" ")))) for line in file.read().splitlines()))
+    print(sum(is_safe(list(map(int, line.split(" ")))) for line in file.read().splitlines()))
