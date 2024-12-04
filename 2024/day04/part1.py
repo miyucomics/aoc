@@ -9,23 +9,17 @@ def get(location):
         return "."
     return world[int(world_width * location.imag + location.real)]
 
-target_string = "XMAS"
-directions = [
-    dx + dy * 1j
-    for dx in range(-1, 2)
-    for dy in range(-1, 2)
-    if not (dx == 0 and dy == 0)
-]
+directions = [-1 - 1j, -1j, 1 - 1j, -1, 1, -1 + 1j, 1j, 1 + 1j]
 
 def matches(position):
-    return sum(
-        all(get(position + (index + 1) * direction) == char for index, char in enumerate(target_string[1:]))
-        for direction in directions
-    )
+    return sum(all(
+        get(position + (index + 1) * direction) == char
+        for index, char in enumerate("MAS")
+    ) for direction in directions)
 
 print(sum(
     matches(x + y * 1j)
     for x in range(world_width)
     for y in range(world_height)
-    if get(x + y * 1j) == target_string[0]
+    if get(x + y * 1j) == "X"
 ))
