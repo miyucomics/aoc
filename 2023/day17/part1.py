@@ -2,7 +2,7 @@ from heapq import heappush, heappop
 
 with open("input.txt", "r") as file:
     world = file.read()
-    world_width = len(world.split("\n")[0])
+    world_width = world.find("\n")
     world_height = world.count("\n")
     world = world.replace("\n", "")
 
