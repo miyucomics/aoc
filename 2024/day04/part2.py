@@ -4,6 +4,8 @@ with open("input.txt") as file:
     world_height = world.count("\n")
     world = world.replace("\n", "")
 
+letters = set("MS")
+
 def get(location):
     if location.real < 0 or location.real >= world_width or location.imag < 0 or location.imag >= world_height:
         return "."
@@ -11,8 +13,7 @@ def get(location):
 
 def matches(position):
     return all(
-        get(position - direction) + get(position + direction) == "MS" or
-        get(position - direction) + get(position + direction) == "SM"
+        {get(position - direction), get(position + direction)} == letters
         for direction in (1 + 1j, 1 - 1j)
     )
 
