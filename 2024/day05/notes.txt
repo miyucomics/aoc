@@ -1,0 +1,3 @@
+This was the first day where I had to change my data structure for optimization. The key was to store the rules as a dictionary of sets where the keys were numbers and the sets what numbers are to come after it. Updates were stored in Part 2 as a dictionary where the keys were the number contained within and the value an index.
+
+There was also a neat realization that saved me from needing to do any sorting at all, where I just tested to see if the intersection of numbers that should be after a given number and the other numbers in the update will be the number of keys // 2 if that number is the middle.
