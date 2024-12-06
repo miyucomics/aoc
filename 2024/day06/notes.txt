@@ -1,0 +1,3 @@
+Using complex numbers is super nice here because you can simply multiply the guard's velocity by -i in order to rotate clockwise.
+
+For Part 2, it is quite clear to me that for the obstacle to be useful at all, it needs to be on the visited path. One could brute force it by simulating an obstacle at every single position the guard travels to. The neat trick is to cache the places where turns were made, and the direction at said turn. If it has repeated twice, it's a loop.
