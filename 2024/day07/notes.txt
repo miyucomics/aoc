@@ -1,0 +1,7 @@
+My original solution used a recursive depth-first-search and ran in quite reasonable time; instantly for Part 1 and around two seconds for Part 2. However, I encountered a new way of approaching the problem where you think backwards instead of forwards. Starting from the end of the "elements", can you subtract, divide, or substring that element from the target number?
+
+Only try subtraction when the last element, which I call the focus, is smaller than the current target. Then recursively call the possible function without that last element and with the smaller target.
+
+Only try division when the focus evenly divides the current target. Then recursively call the possible function without that last element and with the divided target.
+
+Only try substringing when the current target ends in the focus. Then recursively call the possible function without that last element and with the cut target.
