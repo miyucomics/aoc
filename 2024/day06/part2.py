@@ -14,20 +14,15 @@ def get(location):
         return "!"
     return world[int(world_width * location.imag + location.real)]
 
-def lying_get(location, fake_position):
-    if location == fake_position:
-        return "#"
-    return get(location)
-
-def will_be_in_loop(fake_position):
+def will_be_in_loop(spawning_position, guard_direction):
     turns = set()
-    potential_position = original_player_position
-    potential_direction = -1j
+    potential_position = spawning_position - guard_direction
+    potential_direction = guard_direction
 
     while True:
         potential_position += potential_direction
-        current_tile = lying_get(potential_position, fake_position)
-        if current_tile == "#":
+        current_tile = get(potential_position)
+        if potential_position == spawning_position or current_tile == "#":
             potential_position -= potential_direction
             potential_direction *= 1j
             if (potential_position, potential_direction) in turns:
@@ -36,9 +31,10 @@ def will_be_in_loop(fake_position):
         elif current_tile == "!":
             return False
 
-visited = set()
+states = {}
 while True:
-    visited.add(player_position)
+    if player_position not in states.keys():
+        states[player_position] = player_direction
     player_position += player_direction
     current_tile = get(player_position)
     if current_tile == "#":
@@ -48,6 +44,6 @@ while True:
         break
 
 print(sum(
-    will_be_in_loop(position)
-    for position in visited
+    will_be_in_loop(position, direction)
+    for position, direction in states.items()
 ))
