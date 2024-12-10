@@ -1,0 +1,5 @@
+Today was a fun one where I had to use two completely different approaches for Part 1 and 2.
+
+The first part is just a simple simulation of the disk, with a touch of rising and falling pointers for efficiency. I'm certain there are smarter ways to do it but I can't think of them right now.
+
+The second part required me to store the files and free spaces and then I looped over the files backwards, mutating them in whenever I could.
