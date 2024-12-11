@@ -26,8 +26,7 @@ def explore(location, height):
         if get(location + displacement) == height + 1
     )
 
-answer = 0
-for trailhead in trailheads:
-    answer += explore(trailhead, 0)
-
-print(answer)
+print(sum(
+    explore(trailhead, 0)
+    for trailhead in trailheads
+))
