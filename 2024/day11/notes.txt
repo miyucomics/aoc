@@ -1,0 +1,6 @@
+Today, a few immediate realizations rose:
+- the relative position of the rocks don't matter
+- all rocks of the same engraving behave the same
+- this would blow up *fast*
+
+Based on these realizations, I created a dictionary of rock engraving to count. Then I simply iterate over that dictionary and form a new one with all the rules each time. Using this approach, Part 2 which likely stumped a lot of people who simulated the list was a mere change of a single character to me.
