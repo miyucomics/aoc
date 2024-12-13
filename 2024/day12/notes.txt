@@ -1,0 +1,5 @@
+What a day this was.
+
+For Part 1, it was a simple BFS to count area, as well as an additional check to count edges when the BFS exceeds the bounds. Part 2 was a whole other beast. I ended up checking at corners using weird half-integer coordinates and checking neighbors, with a bunch of edge cases programmed in.
+
+There was this extremely rare and obscure bug that passed for all the examples, but massively undercounted in my actual solution, which blew the time for me to do Part 2 up to two hours.
