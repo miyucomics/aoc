@@ -1,0 +1,5 @@
+I really loved today's problem! Part 1 was a simple multiplication and modulus operation, with a four conditionals at the end. I was a little disappointed to be honest since it seemed so trivial for a Day 14. Part 2 though immediately remedied that and boosted today to one of my favorites this year.
+
+I made one crucial assumption: the tree would involve robots clustering somewhere. From that, I wrote the half_mad function to take in the robot's predicted x and y positions and return the sum of distances from the mean. It's called half_mad because mad usually refers to mean absolute deviation. However, dividing to get the average distance from the mean would have only wasted computing power so I skipped that step.
+
+Once you do that, you take the minimum across all possible widths and heights to get the best x and best y. Then you know that whatever the time is, it must be x mod 101 and y mod 103. From there, it's just a simple Chinese Remainder Theorem to get the smallest value of time that works.
