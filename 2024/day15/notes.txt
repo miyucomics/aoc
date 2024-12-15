@@ -1,0 +1,1 @@
+Today reminded me a lot of Sokoban puzzles. It wasn't too bad and I got to recycle a lot of code between Parts. For each move, I just kept track of what boxes had to move logically for it and I ended up simulating the robot with no copying needed: just in-place mutation. Part 2 then was trivial since I only had to expand the affected boxes to include the other half.
