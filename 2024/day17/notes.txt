@@ -1,0 +1,5 @@
+The match keyword seems criminally underused in Python, to the point where my Neovim snippets don't even acknowledge its existence. It made Part 1 look very neat and nice. Other than that, Part 1 was a simple opcode lookup and executor.
+
+At first, this was my Part 2 code. It is a messy and gross hard-coded mess that would not have worked for anyone's input aside from my own. I essentially just reversed the opcodes into Python instructions and performed a DFS to find a solution. I hated this solution since it just felt so cheap that I constructed something only capable of working for my specific input.
+
+Luckily, I had a stroke of inspiration and did exactly that, but rather than hard-code in the inputs, I linked it to my execution from Part 1 and performed the same search, easily generalizing it.
