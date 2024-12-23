@@ -18,7 +18,7 @@ with open("input.txt") as file:
         for i in range(2000):
             secret = hash(secret)
             price = secret % 10
-            sliding_window = (sliding_window << 4) + price - previous_price & 0xFFFF
+            sliding_window = (sliding_window << 5) + price - previous_price & 0xFFFFF
             previous_price = price
 
             if i > 2 and sliding_window not in sold:
