@@ -1,0 +1,11 @@
+Part 1 was a fun little exercise. Part 2...
+
+I have some conclusions I deduced from the Ripple Carry Adder.
+
+CONDITION I: output = x XOR y XOR c
+CONDITION II: next_carry = (a AND b) OR ((a XOR b) AND c)
+---
+CONCLUSION I: if output is a z, op must be XOR unless it's the final z
+CONCLUSION II: if output is not z and inputs are not x or y, then op can not be XOR
+
+Then I swapped wires that didn't match those and ran the circuit and compared it to the expected value. I saw the gate responsible for the extra faulty value and added it to the set.
