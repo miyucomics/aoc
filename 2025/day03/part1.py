@@ -5,18 +5,13 @@ answer = 0
 for line in lines:
     buffer = list(map(int, line.strip()))
 
-    first_pass_max = buffer[0]
-    first_pass_index = 0
+    slice_position = 0
+    best_first_digit = buffer[0]
     for i, num in enumerate(buffer):
-        if num > first_pass_max and i != len(buffer) - 1:
-            first_pass_index = i
-            first_pass_max = num
+        if num > best_first_digit and i != len(buffer) - 1:
+            slice_position = i
+            best_first_digit = num
 
-    second_pass_max = float("-inf")
-    for i, num in enumerate(buffer[first_pass_index + 1:]):
-        if num > second_pass_max:
-            second_pass_max = num
-
-    answer += 10 * first_pass_max + second_pass_max
+    answer += 10 * best_first_digit + max(buffer[slice_position + 1:])
 
 print(answer)
