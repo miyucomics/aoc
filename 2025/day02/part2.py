@@ -12,7 +12,6 @@ def is_string_invalid(string):
             for i in range(0, total, divisor)
         ]
         if len(set(substrings)) == 1:
-            print(string)
             return True
     return False
 
