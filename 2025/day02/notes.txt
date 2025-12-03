@@ -1,0 +1,5 @@
+The elegant solutions to this puzzle really come down to cleverly generating every possible invalid ID and then testing if they exist in the ranges. We first know that an invalid ID can not be longer than half the number of digits in the uppermost endpoint. From there, it is a trivial loop with some clever magic. I'll explain below:
+
+Invalid IDs are multiples of 11, 101, 111, etc... For example, 555 is a multiple of 111 and 5050 is a multiple of 101. I call those numbers "magic" in code, since when you multiply by the "pattern", it yields an invalid ID. "repetitions" is just how often the pattern ( say 13 ) is repeated ( repetitions = 2 means 1313 ) and the magic number is generated via a sum of powers of 10s. Repetition grows until it goes over the upper endpoint.
+
+Once you have a list of invalid numbers, it's easy to count up which ones are in the ranges. A binary search would probably accelerate it but also be overkill.
