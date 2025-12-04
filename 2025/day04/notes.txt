@@ -1,1 +1,3 @@
 An extremely straightforward day, I got to bring back the flat flat representation that I love to use for these kinds of grid puzzles.
+
+The elegant solution I came up with is creating a second world map that contains neighbors so I never need to fully rescan the grid, I can just look for small numbers and locally update.
