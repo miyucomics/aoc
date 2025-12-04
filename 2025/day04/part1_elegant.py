@@ -1,5 +1,3 @@
-from collections import deque
-
 with open("input.txt") as file:
     world = file.read()
     world_width = world.find("\n")
@@ -13,18 +11,13 @@ def idx(pos):
 def get_world(location):
     if location.real < 0 or location.real >= world_width or location.imag < 0 or location.imag >= world_height:
         return False
-    return world[int(world_width * location.imag + location.real)]
-
-def get_neighbor(location):
-    if location.real < 0 or location.real >= world_width or location.imag < 0 or location.imag >= world_height:
-        return 0
-    return neighbor_map[int(world_width * location.imag + location.real)]
+    return world[idx(location)]
 
 neighbor_map = [0] * world_width * world_height
 def modify_neighbors(location, change):
     if location.real < 0 or location.real >= world_width or location.imag < 0 or location.imag >= world_height:
         return False
-    neighbor_map[int(world_width * location.imag + location.real)] += change
+    neighbor_map[idx(location)] += change
 
 offsets = {
     y * 1j + x
@@ -38,26 +31,4 @@ for active in actives:
     for offset in offsets:
         modify_neighbors(active + offset, 1)
 
-answer = 0
-queue = deque(
-    pos
-    for pos in actives
-    if neighbor_map[idx(pos)] < 4
-)
-
-while queue:
-    pos = queue.popleft()
-    if not get_world(pos):
-        continue
-
-    world[idx(pos)] = False
-    actives.remove(pos)
-    answer += 1
-
-    for offset in offsets:
-        n = pos + offset
-        modify_neighbors(n, -1)
-        if get_neighbor(n) == 3:
-            queue.append(n)
-
-print(answer)
+print(sum(1 for pos in actives if neighbor_map[idx(pos)] < 4))
