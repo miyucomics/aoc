@@ -1,0 +1,5 @@
+The Part 1 was so incredibly concerningly easy. It felt almost like an easier version of Day 2. I just parsed the ranges as a tuple of a start and end, and then I went through each number, and then I checked if it was larger than or equal to the start and smaller than or equal to the end.
+
+Part 2 required a little finesse to shrink the ranges if they were fully contained within another range or to merge them and to get rid of overlaps, but honestly, it was not all that difficult. Test if a range is contained within another/touching another, and just shift up the endpoint of the interval. No sliding window, no fancy techniques, etc... then just sum up the number of numbers contained in an interval.
+
+Extremely concerningly easy for a Day 5 of 12 Days. I thought difficulty would ramp up really quickly or something to compensate for fewer days. Perhaps this is the calm before the storm, but it took like five minutes to do these problems.
