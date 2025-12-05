@@ -8,13 +8,13 @@ for part in ranges_raw.split("\n"):
 
 ranges.sort()
 
-merged = []
-for interval in ranges:
-    if len(merged) == 0 or interval[0] > merged[-1][1] + 1:
+merged = [ranges[0]]
+for interval in ranges[1:]:
+    if interval[0] > merged[-1][1] + 1:
         merged.append(interval)
     else:
-        original = merged[-1]
-        merged[-1] = (merged[-1][0], max(merged[-1][1], interval[1]))
+        a, b = merged[-1]
+        merged[-1] = (a, max(b, interval[1]))
 
 print(sum(
     interval[1] - interval[0] + 1
