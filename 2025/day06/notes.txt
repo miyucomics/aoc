@@ -1,0 +1,7 @@
+I was worried that I was starting to reach the limits of what I am capable of but suprisingly, I managed to solve this one pretty quickly too, in under thirty minutes.
+
+Part 1 was pretty simple, I essentially split on spaces and trimmed everything else, leaving just the numbers. For example, the first line of the example input—"123 328  51 64 "—boiled down into [123, 328, 51, 64]. The last line of course turned into a list of operations. From there, I transposed it so it went from the problems being splayed across the nth element of each list—i.e. the first problem was made of the first elements of all the columns of the matrix—into each row just nicely holding the numbers followed by the operator at the end. From there, just use the operator to determine whether to add or multiply the list of numbers.
+
+Part 2 required a complete rewrite of my parsing. Since whitespace was suddenly important, I had to do an entirely new technique. I noted that problems were separated by a single column of just spaces, so I transposed them. Problems are now separated by a row of spaces, which let me iterate line by line and pull them out into separate arrays of transposed problems. Being transposed actually helped a great deal because I had to read the numbers transposed anyways, so it was already in the right orientation for me to just strip off the empty space at the end, join the digits, and create a list of operands and an operator which I evaluated like in Part 1.
+
+All in all, pretty fun day!
