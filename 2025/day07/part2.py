@@ -1,19 +1,19 @@
-from collections import defaultdict
+from collections import Counter
 
 with open("input.txt") as file:
-    raw = file.readlines()
-    beam_counter = defaultdict(int)
-    beam_counter[raw[0].find("S")] = 1
-    splitter_data = [set(i for i, char in enumerate(line.strip()) if char == "^") for line in raw[2::2]]
+    lines = file.readlines()
+
+beam_counts = Counter({lines[0].index("S"): 1})
+splitter_data = [{i for i, char in enumerate(row) if char == "^"} for row in lines[2::2]]
 
 for i, row in enumerate(splitter_data):
-    new_beam_counter = defaultdict(int)
-    for column, count in beam_counter.items():
+    updated = Counter()
+    for column, count in beam_counts.items():
         if column in row:
-            new_beam_counter[column - 1] += count
-            new_beam_counter[column + 1] += count
+            updated[column - 1] += count
+            updated[column + 1] += count
         else:
-            new_beam_counter[column] += count
-    beam_counter = new_beam_counter
+            updated[column] += count
+    beam_counts = updated
 
-print(sum(beam_counter[i] for i in beam_counter.keys()))
+print(sum(beam_counts.values()))
