@@ -1,50 +1,48 @@
 with open("input.txt") as file:
-    positions = [tuple(map(int, line.split(","))) for line in file.readlines()]
-    all_boxes = set(range(len(positions)))
+    boxes = [tuple(map(int, line.split(","))) for line in file.readlines()]
+    total_number = len(boxes)
 
-squared_distances = {}
-for i, a in enumerate(positions):
-    for j in range(i + 1, len(positions)):
-        b = positions[j]
-        squared_distances[(i, j)] = (a[0] - b[0]) ** 2 + (a[1] - b[1]) ** 2 + (a[2] - b[2]) ** 2
+connections = []
+for id_a, a in enumerate(boxes):
+    for id_b in range(id_a + 1, len(boxes)):
+        b = boxes[id_b]
+        connections.append(tuple([(a[0] - b[0]) ** 2 + (a[1] - b[1]) ** 2 + (a[2] - b[2]) ** 2, id_a, id_b]))
+connections.sort()
 
-pairs = list(squared_distances.keys())
-pairs.sort(key=lambda x: squared_distances[x])
-
-circuit_id = 0
-circuit_association = {}
+working_id = 0
+circuit_lookup = {}
 circuit_sizes = {}
 seen_boxes = set()
 
-for i, j in pairs:
-    seen_boxes.add(i)
-    seen_boxes.add(j)
+for distance, id_a, id_b in connections:
+    seen_boxes.add(id_a)
+    seen_boxes.add(id_b)
 
-    ai = i in circuit_association
-    bi = j in circuit_association
-    if ai and bi:
-        c1 = circuit_association[i]
-        c2 = circuit_association[j]
-        if c1 != c2:
-            for box, circuit in circuit_association.items():
-                if circuit == c2:
-                    circuit_association[box] = c1
-            circuit_sizes[c1] += circuit_sizes[c2]
-            del circuit_sizes[c2]
-    elif ai:
-        circuit = circuit_association[i]
-        circuit_association[j] = circuit
+    a_in = id_a in circuit_lookup
+    b_in = id_b in circuit_lookup
+    if a_in and b_in:
+        id_i = circuit_lookup[id_a]
+        id_j = circuit_lookup[id_b]
+        if id_i != id_j:
+            for box, circuit in circuit_lookup.items():
+                if circuit == id_j:
+                    circuit_lookup[box] = id_i
+            circuit_sizes[id_i] += circuit_sizes[id_j]
+            del circuit_sizes[id_j]
+    elif a_in:
+        circuit = circuit_lookup[id_a]
+        circuit_lookup[id_b] = circuit
         circuit_sizes[circuit] += 1
-    elif bi:
-        circuit = circuit_association[j]
-        circuit_association[i] = circuit
+    elif b_in:
+        circuit = circuit_lookup[id_b]
+        circuit_lookup[id_a] = circuit
         circuit_sizes[circuit] += 1
     else:
-        circuit_association[i] = circuit_id
-        circuit_association[j] = circuit_id
-        circuit_sizes[circuit_id] = 2
-        circuit_id += 1
+        circuit_lookup[id_a] = working_id
+        circuit_lookup[id_b] = working_id
+        circuit_sizes[working_id] = 2
+        working_id += 1
 
-    if seen_boxes == all_boxes and len(circuit_sizes) == 1:
-        print(positions[i][0] * positions[j][0])
+    if len(seen_boxes) == total_number and len(circuit_sizes) == 1:
+        print(boxes[id_a][0] * boxes[id_b][0])
         break
