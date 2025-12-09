@@ -1,0 +1,7 @@
+Part 1 was extremely easy.
+
+Part 2 was the first Part that made me give up solving within a day and I took an extra day and a half to solve it proper. My technique relies on sparse compression because the x and y points of the figure are far apart and thus, I can cut through all that empty space. Interestingly, it was my friend talking about special relativity that gave me this idea. Once I flatten it all down into a reduced shape, it was then feasible to apply my second optimization technique: prefix sum.
+
+I use a 2D prefix sum array (essentially a running sum of all the numbers from 0,0 to the given position) and declare the outside as 1, making the inside 0. Due to a property of prefix sum arrays, you can in linear time find the sum of numbers in any rectangular splice of the matrix, and if you are trying to see if a rectangle fits, it is as easy as seeing if the sum is 0. If it's greater than 0, that means some of the outside got caught inside the rectangle and we can reject it.
+
+At the end, I simply collect all the rectangles, sort them by size, and print the size of the first one that matches.
